@@ -1,11 +1,66 @@
 package com.harshad.projectclean
 
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import com.harshad.projectclean.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
+    lateinit var sharedPref : SharedPreferences
+    private var isRemembered =false
+
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+
+
+        binding.btnLogout.setVisibility(View.INVISIBLE)
+
+        binding.btnLogin.setOnClickListener{
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+        binding.btnSignup.setOnClickListener{
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+
+
+        sharedPref = getSharedPreferences("SP", Context.MODE_PRIVATE)
+        isRemembered = sharedPref.getBoolean("REMEMBER", false)
+
+        if (!isRemembered){
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+        else{
+            binding.btnLogout.setVisibility(View.VISIBLE)
+            binding.btnLogin.setVisibility(View.INVISIBLE)
+        }
+
+
+
+        binding.btnLogout.setOnClickListener{
+
+            val editor :SharedPreferences.Editor =sharedPref.edit()
+            editor.clear()
+            editor.apply()
+
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
     }
 }
