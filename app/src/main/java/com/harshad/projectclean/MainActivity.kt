@@ -19,9 +19,12 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-
-
         binding.btnLogout.setVisibility(View.INVISIBLE)
+
+        binding.btnDisplayGri.setOnClickListener {
+            val intent = Intent(this, DisplayGrievance::class.java)
+            startActivity(intent)
+        }
 
         binding.btnLogin.setOnClickListener{
             val intent = Intent(this, LoginActivity::class.java)
