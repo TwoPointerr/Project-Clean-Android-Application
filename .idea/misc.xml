@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/CODING/Android Projects/Android_Course/ProjectClean/app/src/main/res/layout/activity_display_grievance.xml" value="0.1" />
         <entry key="..\:/CODING/Android Projects/Android_Course/ProjectClean/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/CODING/Android Projects/Android_Course/ProjectClean/app/src/main/res/layout/single_grievance_item_view.xml" value="0.20416666666666666" />
       </map>
     </option>
   </component>

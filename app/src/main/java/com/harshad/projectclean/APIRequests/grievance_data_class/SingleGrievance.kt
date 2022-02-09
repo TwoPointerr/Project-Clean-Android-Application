@@ -1,6 +1,7 @@
 package com.harshad.projectclean.APIRequests.grievance_data_class
 
 data class SingleGrievance(val id:Int,
+                           val gri_title:String,
                            val gri_img:String,
                            val gri_desc:String,
                            val gri_category: CategoryData,

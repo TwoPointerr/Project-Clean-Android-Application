@@ -1,5 +1,6 @@
 package com.harshad.projectclean
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -19,26 +20,11 @@ class MainActivity : AppCompatActivity() {
         var btn_display_gri = findViewById<Button>(R.id.btn_display_gri)
 
         btn_display_gri.setOnClickListener {
-            getGriData()
+            var intent = Intent(this, DisplayGrievance::class.java)
             Toast.makeText(this, "You clicked me.", Toast.LENGTH_SHORT).show()
+            startActivity(intent)
         }
     }
 
-    fun getGriData(){
-        var apiClient: ApiClient = ApiClient()
-        apiClient.getApiService().getGrievanceData(token = "Token f1fda758da079242d64a1c2c8c942c222d1e8707")
-            .enqueue(object:Callback<GrievancesListResponse>{
-            override fun onResponse(
-                call: Call<GrievancesListResponse>,
-                response: Response<GrievancesListResponse>
-            ) {
-                var gri_resposne = response.body()
-                Log.d("Gri Data","Response Success ${gri_resposne}")
-            }
 
-            override fun onFailure(call: Call<GrievancesListResponse>, t: Throwable) {
-                Log.d("Gri Data","Response ERROR ${t} ")
-            }
-        })
-    }
 }
