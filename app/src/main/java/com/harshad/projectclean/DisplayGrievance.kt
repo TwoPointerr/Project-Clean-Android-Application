@@ -23,7 +23,8 @@ class DisplayGrievance : AppCompatActivity() {
 
     fun getGriData(context:Context){
         var apiClient: ApiClient = ApiClient()
-        apiClient.getApiService().getGrievanceData(token = "Token f1fda758da079242d64a1c2c8c942c222d1e8707")
+        var sharedPref = getSharedPreferences("SP", Context.MODE_PRIVATE)
+        apiClient.grievanceApiRequests().getGrievanceData(token = "Token ${sharedPref.getString("auth_token","No auth token").toString()}")
             .enqueue(object: Callback<GrievancesListResponse> {
                 override fun onResponse(
                     call: Call<GrievancesListResponse>,

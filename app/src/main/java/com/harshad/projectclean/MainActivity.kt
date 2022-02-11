@@ -11,7 +11,7 @@ import com.harshad.projectclean.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     lateinit var sharedPref : SharedPreferences
-    private var isRemembered =false
+    private var isRemembered = false
 
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,6 +20,10 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
         binding.btnLogout.setVisibility(View.INVISIBLE)
+
+        sharedPref = getSharedPreferences("SP", Context.MODE_PRIVATE)
+
+        binding.tvDemoText.text = sharedPref.getString("auth_token","No auth token").toString()
 
         binding.btnDisplayGri.setOnClickListener {
             val intent = Intent(this, DisplayGrievance::class.java)
@@ -39,7 +43,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        sharedPref = getSharedPreferences("SP", Context.MODE_PRIVATE)
+
         isRemembered = sharedPref.getBoolean("REMEMBER", false)
 
         if (!isRemembered){

@@ -22,7 +22,7 @@ class GrievanceRecycleViewAdapter(private val context: Context, private val grie
     }
 
     override fun onBindViewHolder(holder: GrievanceViewHolder, position: Int) {
-        Glide.with(context).load("${URLConstants.BASE_URL}${grievance_list[position].gri_img}").into(holder.gri_img)
+        Glide.with(context).load(grievance_list[position].gri_img).into(holder.gri_img)
         holder.gri_title.text = grievance_list[position].gri_title
         holder.gri_desc.text = grievance_list[position].gri_desc
 
