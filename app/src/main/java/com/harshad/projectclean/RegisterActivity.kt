@@ -55,9 +55,6 @@ class RegisterActivity : AppCompatActivity() {
                 Toast.makeText(this,"Enter Info", Toast.LENGTH_LONG).show()
             }
         }
-        // TODO: register fnlity
-        // TODO: next step img username location
-
     }
     private fun validate(): Boolean {
         return (binding.edUsername.text.trim().isNotEmpty() )
