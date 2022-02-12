@@ -5,15 +5,11 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.CheckBox
-import android.widget.TextView
 import android.widget.Toast
 import com.harshad.projectclean.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
     lateinit var sharedPref : SharedPreferences
-    private var isRemembered =false
     private lateinit var binding: ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +31,7 @@ class LoginActivity : AppCompatActivity() {
             if(binding.edUsername.text.trim().isNotEmpty() || binding.edPassword.text.trim().isNotEmpty()){
                 val username:String = binding.edUsername.text.toString()
                 val password:String = binding.edPassword.text.toString()
-
+                validate()
                 val editor : SharedPreferences.Editor =sharedPref.edit()
                 editor.putString("username", username)
                 editor.putString("pass", password)
@@ -55,5 +51,12 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this,"Enter Info",Toast.LENGTH_LONG).show()
             }
         }
+    }
+    private fun validate(): Boolean {
+        if(binding.edUsername.text.trim().isNotEmpty() || binding.edPassword.text.trim().isNotEmpty())
+        {
+            return true
+        }
+        return true
     }
 }

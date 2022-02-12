@@ -24,15 +24,11 @@ class MainActivity : AppCompatActivity() {
         binding.btnDisplayGri.setOnClickListener {
             val intent = Intent(this, DisplayGrievance::class.java)
             startActivity(intent)
+            finish()
         }
 
         binding.btnLogin.setOnClickListener{
             val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
-        binding.btnSignup.setOnClickListener{
-            val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
             finish()
         }
