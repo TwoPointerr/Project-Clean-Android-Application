@@ -3,12 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Android Studio/Project_Clean_Android_Application/app/src/main/res/layout/activity_display_grievance.xml" value="0.1609375" />
-        <entry key="..\:/Android Studio/Project_Clean_Android_Application/app/src/main/res/layout/activity_login.xml" value="0.33" />
-        <entry key="..\:/Android Studio/Project_Clean_Android_Application/app/src/main/res/layout/activity_main.xml" value="0.2" />
-        <entry key="..\:/Android Studio/Project_Clean_Android_Application/app/src/main/res/layout/activity_profile_setup.xml" value="0.3411458333333333" />
-        <entry key="..\:/Android Studio/Project_Clean_Android_Application/app/src/main/res/layout/activity_register.xml" value="0.33" />
-        <entry key="..\:/Android Studio/Project_Clean_Android_Application/app/src/main/res/layout/single_grievance_item_view.xml" value="0.1609375" />
+        <entry key="..\:/CODING/Android Projects/Android_Course/ProjectClean/app/src/main/res/layout/activity_display_grievance.xml" value="0.1" />
+        <entry key="..\:/CODING/Android Projects/Android_Course/ProjectClean/app/src/main/res/layout/activity_login.xml" value="0.16576086956521738" />
+        <entry key="..\:/CODING/Android Projects/Android_Course/ProjectClean/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/CODING/Android Projects/Android_Course/ProjectClean/app/src/main/res/layout/activity_register.xml" value="0.16576086956521738" />
+        <entry key="..\:/CODING/Android Projects/Android_Course/ProjectClean/app/src/main/res/layout/single_grievance_item_view.xml" value="0.20416666666666666" />
       </map>
     </option>
   </component>
