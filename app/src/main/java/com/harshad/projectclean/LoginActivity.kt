@@ -17,7 +17,6 @@ import retrofit2.Response
 class LoginActivity : AppCompatActivity() {
     lateinit var sharedPref : SharedPreferences
 
-    private var isRemembered = false
     private lateinit var binding: ActivityLoginBinding
 
 
@@ -40,7 +39,6 @@ class LoginActivity : AppCompatActivity() {
             if(binding.edUsername.text.trim().isNotEmpty() || binding.edPassword.text.trim().isNotEmpty()){
                 val username:String = binding.edUsername.text.trim().toString()
                 val password:String = binding.edPassword.text.trim().toString()
-                validate()
                 login(this,username,password)
 
                 val editor : SharedPreferences.Editor = sharedPref.edit()
@@ -91,13 +89,5 @@ class LoginActivity : AppCompatActivity() {
     }
 
 
-     fun validate(): Boolean {
-        if (binding.edUsername.text.trim().isNotEmpty() || binding.edPassword.text.trim()
-                .isNotEmpty()
-        ) {
-            return true
-        }
-        return true
 
-    }
 }
