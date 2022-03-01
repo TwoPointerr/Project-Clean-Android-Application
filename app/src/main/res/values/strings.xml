@@ -11,4 +11,9 @@
     <string name="log_out">Log out</string>
     <string name="grievance">Grievance</string>
     <string name="save">Save</string>
+    <string name="select">Select Item</string>
+    <string name="profile_setup">Profile Setup</string>
+    <string name="dscribe">Dscribe</string>
+    <string name="describe">Describe</string>
+    <string name="grievance_image">Grievance Image</string>
 </resources>

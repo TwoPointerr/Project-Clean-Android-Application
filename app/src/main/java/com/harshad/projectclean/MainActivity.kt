@@ -31,6 +31,18 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
 
+        binding.fabNew.setOnClickListener {
+            val intent = Intent(this, CreatePost::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        binding.btnProfileSetup.setOnClickListener {
+            val intent = Intent(this, ProfileSetup::class.java)
+            startActivity(intent)
+            finish()
+        }
+
         binding.btnLogin.setOnClickListener{
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)

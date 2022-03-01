@@ -24,7 +24,7 @@ class DisplayGrievance : AppCompatActivity() {
     fun getGriData(context:Context){
         var apiClient: ApiClient = ApiClient()
         var sharedPref = getSharedPreferences("SP", Context.MODE_PRIVATE)
-        apiClient.grievanceApiRequests().getGrievanceData(token = "Token ${sharedPref.getString("auth_token","No auth token").toString()}")
+        apiClient.grievanceApiRequests().getGrievanceData(token = "Token 5de1b0199b814610bb91a7328e7eccabdfff4c8c")
             .enqueue(object: Callback<GrievancesListResponse> {
                 override fun onResponse(
                     call: Call<GrievancesListResponse>,
@@ -35,7 +35,7 @@ class DisplayGrievance : AppCompatActivity() {
                     var recy_grievance_list = findViewById<RecyclerView>(R.id.recy_grievance_list)
                     recy_grievance_list.adapter = GrievanceRecycleViewAdapter(context,gri_resposne!!.gri_data)
                     recy_grievance_list.layoutManager = LinearLayoutManager(context)
-                    Log.d("Gri Data","Response Success ${gri_resposne?.gri_data}")
+                    Log.d("Gri Data","Response Success ${gri_resposne.gri_data}")
                 }
 
                 override fun onFailure(call: Call<GrievancesListResponse>, t: Throwable) {

@@ -9,7 +9,7 @@ import android.widget.Toast
 import com.harshad.projectclean.databinding.ActivityRegisterBinding
 
 class RegisterActivity : AppCompatActivity() {
-    lateinit var sharedPref : SharedPreferences
+    lateinit var sharedPref: SharedPreferences
 
     private lateinit var binding: ActivityRegisterBinding
 
@@ -21,7 +21,7 @@ class RegisterActivity : AppCompatActivity() {
 
 
 
-        binding.textLogin.setOnClickListener{
+        binding.textLogin.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish()
@@ -30,12 +30,12 @@ class RegisterActivity : AppCompatActivity() {
         sharedPref = getSharedPreferences("SP", Context.MODE_PRIVATE)
 
 
-        binding.btnSignup.setOnClickListener{
-            if(validate()){
-                val phoneno:String = binding.edPhoneno.text.toString()
-                val username:String = binding.edUsername.text.toString()
-                val password:String = binding.edPassword.text.toString()
-                val editor : SharedPreferences.Editor =sharedPref.edit()
+        binding.btnSignup.setOnClickListener {
+            if (validate()) {
+                val phoneno: String = binding.edPhoneno.text.toString()
+                val username: String = binding.edUsername.text.toString()
+                val password: String = binding.edPassword.text.toString()
+                val editor: SharedPreferences.Editor = sharedPref.edit()
                 editor.putString("username", username)
                 editor.putString("phoneno", phoneno)
 
@@ -43,20 +43,21 @@ class RegisterActivity : AppCompatActivity() {
 
 
 
-                Toast.makeText(this,"Profile", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Profile", Toast.LENGTH_LONG).show()
 
                 val intent = Intent(this, ProfileSetup::class.java)
 //                intent.putExtra("Username",username)
 //                intent.putExtra("Phoneno",phoneno)
                 startActivity(intent)
                 finish()
-            }
-            else{
-                Toast.makeText(this,"Enter Info", Toast.LENGTH_LONG).show()
+            } else {
+                Toast.makeText(this, "Enter Info", Toast.LENGTH_LONG).show()
             }
         }
     }
+
     private fun validate(): Boolean {
-        return (binding.edUsername.text.trim().isNotEmpty() )
+            return true
+
     }
 }
