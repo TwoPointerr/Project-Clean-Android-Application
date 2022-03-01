@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
+import androidx.core.net.toFile
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.harshad.projectclean.databinding.ActivityProfileSetupBinding
 
@@ -32,11 +33,8 @@ class ProfileSetup : AppCompatActivity() {
             finish()
         }
         binding.fabImg.setOnClickListener {
-            ImagePicker.with(this).crop(1f, 1f).galleryMimeTypes(arrayOf("image/*"))
-                .maxResultSize(720, 720).saveDir(
-                getExternalFilesDir(
-                    Environment.DIRECTORY_PICTURES
-                )!!
+            ImagePicker.with(this).galleryMimeTypes(arrayOf("image/*"))
+                .maxResultSize(128, 128).saveDir(getExternalFilesDir(Environment.DIRECTORY_PICTURES)!!
             ).start()
         }
 
@@ -51,9 +49,8 @@ class ProfileSetup : AppCompatActivity() {
             binding.profileImage.setImageURI(data?.data)
             Log.d("Asach","${data?.data}")
 
-            var s1:String
-            s1 = data?.data.toString()
-            Log.d("Bdach",s1)
+            var s1= data?.data?.toFile()
+            Log.d("Bdach",s1.toString())
 
         }
 

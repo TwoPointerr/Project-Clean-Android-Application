@@ -6,19 +6,24 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
+import android.widget.CheckBox
+import android.widget.TextView
 import android.widget.Toast
 import com.harshad.projectclean.APIRequests.ApiClient
-import com.harshad.projectclean.APIRequests.authentication_data_class.CurrentLoggedUserResponse
 import com.harshad.projectclean.APIRequests.authentication_data_class.LoginRequest
 import com.harshad.projectclean.APIRequests.authentication_data_class.LoginResponse
 import com.harshad.projectclean.databinding.ActivityLoginBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import kotlin.math.log
 
 class LoginActivity : AppCompatActivity() {
     lateinit var sharedPref: SharedPreferences
     private lateinit var binding: ActivityLoginBinding
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
@@ -73,20 +78,17 @@ class LoginActivity : AppCompatActivity() {
                     val loginResponse = response.body()
                     if (loginResponse?.auth_token != null) {
                         editor.putString("auth_token", loginResponse.auth_token)
-                        editor.putBoolean("REMEMBER", true)
                         editor.apply()
                         Toast.makeText(
                             context,
                             "Successful Login ${loginResponse.auth_token}",
                             Toast.LENGTH_LONG
                         ).show()
-                        Log.d("Login","Successful ${loginResponse.auth_token}")
-                        storeCurrentLoggedUser("${loginResponse.auth_token}")
-                        val intent = Intent(context, MainActivity::class.java)
-                        startActivity(intent)
-                        finish()
+
                     }
+
                 }
+
                 override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                     Toast.makeText(context, "Login Unsuccessful", Toast.LENGTH_LONG).show()
                 }
