@@ -40,7 +40,7 @@ class CreatePost : AppCompatActivity() {
 
 
 
-        ImagePicker.with(this).galleryMimeTypes(arrayOf("image/*"))
+        ImagePicker.with(this).cameraOnly()
             .compress(1024)
             .saveDir(getExternalFilesDir(Environment.DIRECTORY_PICTURES)!!
             ).start()

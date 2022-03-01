@@ -11,6 +11,7 @@ import android.widget.CheckBox
 import android.widget.TextView
 import android.widget.Toast
 import com.harshad.projectclean.APIRequests.ApiClient
+import com.harshad.projectclean.APIRequests.authentication_data_class.CurrentLoggedUserResponse
 import com.harshad.projectclean.APIRequests.authentication_data_class.LoginRequest
 import com.harshad.projectclean.APIRequests.authentication_data_class.LoginResponse
 import com.harshad.projectclean.databinding.ActivityLoginBinding
