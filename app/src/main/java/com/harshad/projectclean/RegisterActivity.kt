@@ -40,9 +40,6 @@ class RegisterActivity : AppCompatActivity() {
                 editor.putString("phoneno", phoneno)
 
                 editor.apply()
-
-
-
                 Toast.makeText(this,"Profile", Toast.LENGTH_LONG).show()
 
                 val intent = Intent(this, ProfileSetup::class.java)

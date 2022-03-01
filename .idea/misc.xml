@@ -6,8 +6,9 @@
         <entry key="..\:/CODING/Android Projects/Android_Course/ProjectClean/app/src/main/res/layout/activity_display_grievance.xml" value="0.1" />
         <entry key="..\:/CODING/Android Projects/Android_Course/ProjectClean/app/src/main/res/layout/activity_login.xml" value="0.16576086956521738" />
         <entry key="..\:/CODING/Android Projects/Android_Course/ProjectClean/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/CODING/Android Projects/Android_Course/ProjectClean/app/src/main/res/layout/activity_register.xml" value="0.16576086956521738" />
-        <entry key="..\:/CODING/Android Projects/Android_Course/ProjectClean/app/src/main/res/layout/single_grievance_item_view.xml" value="0.20416666666666666" />
+        <entry key="..\:/CODING/Android Projects/Android_Course/ProjectClean/app/src/main/res/layout/activity_profile_setup.xml" value="0.16576086956521738" />
+        <entry key="..\:/CODING/Android Projects/Android_Course/ProjectClean/app/src/main/res/layout/activity_register.xml" value="0.25" />
+        <entry key="..\:/CODING/Android Projects/Android_Course/ProjectClean/app/src/main/res/layout/single_grievance_item_view.xml" value="0.22" />
       </map>
     </option>
   </component>
