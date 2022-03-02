@@ -24,7 +24,6 @@ class LoginActivity : AppCompatActivity() {
     lateinit var sharedPref: SharedPreferences
     private lateinit var binding: ActivityLoginBinding
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
@@ -79,17 +78,21 @@ class LoginActivity : AppCompatActivity() {
                     val loginResponse = response.body()
                     if (loginResponse?.auth_token != null) {
                         editor.putString("auth_token", loginResponse.auth_token)
+                        editor.putBoolean("REMEMBER", true)
                         editor.apply()
+
+                        storeCurrentLoggedUser(loginResponse.auth_token)
                         Toast.makeText(
                             context,
                             "Successful Login ${loginResponse.auth_token}",
                             Toast.LENGTH_LONG
                         ).show()
 
+                        val intent = Intent(context, MainActivity::class.java)
+                        startActivity(intent)
+                        finish()
                     }
-
                 }
-
                 override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                     Toast.makeText(context, "Login Unsuccessful", Toast.LENGTH_LONG).show()
                 }
@@ -116,6 +119,7 @@ class LoginActivity : AppCompatActivity() {
                     editor.apply()
                     Log.d("Current User","Info ${sharedPref.getString("user_first_name","No name")} ${sharedPref.getInt("user_id",0).toString()}")
                     //Log.d("Current User","Successful ${response.body()}")
+
                 }
                 override fun onFailure(call: Call<CurrentLoggedUserResponse>, t: Throwable) {
                     Log.d("Current User","Unsuccessful $t")

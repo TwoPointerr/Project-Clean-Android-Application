@@ -32,12 +32,12 @@ class RegisterActivity : AppCompatActivity() {
 
         binding.btnSignup.setOnClickListener{
             if(validate()){
-                val phoneno:String = binding.edPhoneno.text.toString()
+                //val phoneno:String = binding.edPhoneno.text.toString()
                 val username:String = binding.edUsername.text.toString()
                 val password:String = binding.edPassword.text.toString()
                 val editor : SharedPreferences.Editor =sharedPref.edit()
                 editor.putString("username", username)
-                editor.putString("phoneno", phoneno)
+                //editor.putString("phoneno", phoneno)
 
                 editor.apply()
                 Toast.makeText(this,"Profile", Toast.LENGTH_LONG).show()
