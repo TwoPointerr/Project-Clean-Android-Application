@@ -41,7 +41,7 @@ class GrievanceRecycleViewAdapter(private val context: Context, private val grie
     class GrievanceViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         var gri_title = itemView.findViewById<TextView>(R.id.tv_gri_title)
         var gri_location = itemView.findViewById<TextView>(R.id.tv_gri_location)
-        var gri_desc = itemView.findViewById<TextView>(R.id.tv_gri_desc)
+        var gri_desc = itemView.findViewById<TextView>(R.id.tvDesc)
         var gri_img = itemView.findViewById<ImageView>(R.id.iv_gri_img)
         var gri_like_btn = itemView.findViewById<Button>(R.id.btn_griLike)
         var gri_comment_btn = itemView.findViewById<Button>(R.id.btn_griComment)
