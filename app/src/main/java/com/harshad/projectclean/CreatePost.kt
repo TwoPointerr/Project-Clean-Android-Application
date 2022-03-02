@@ -41,6 +41,16 @@ class CreatePost : AppCompatActivity() {
         binding = ActivityCreatePostBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+        ImagePicker.with(this).cameraOnly()
+            .compress(512)
+            .saveDir(getExternalFilesDir(Environment.DIRECTORY_PICTURES)!!).start()
+
+        binding.fabImg.setOnClickListener {
+            ImagePicker.with(this).cameraOnly()
+                .compress(512)
+                .saveDir(getExternalFilesDir(Environment.DIRECTORY_PICTURES)!!).start()
+        }
         sharedPref = getSharedPreferences("SP", Context.MODE_PRIVATE)
 
         actv = binding.dropMenu
@@ -51,9 +61,7 @@ class CreatePost : AppCompatActivity() {
             Toast.makeText(applicationContext, "Item: $item", Toast.LENGTH_SHORT).show()
         })
 
-        ImagePicker.with(this).cameraOnly()
-            .compress(512)
-            .saveDir(getExternalFilesDir(Environment.DIRECTORY_PICTURES)!!).start()
+
 
         binding.btnSave.setOnClickListener {
             val griTitle = binding.edDesc.text.trim().toString()

@@ -25,7 +25,8 @@ class ProfileSetup : AppCompatActivity() {
         setContentView(view)
         sharedPref = getSharedPreferences("SP", Context.MODE_PRIVATE)
         binding.edUsername.setText(sharedPref.getString("username","none"))
-        binding.edPhoneno.setText(sharedPref.getString("phoneno","none"))
+        binding.edEmail.setText(sharedPref.getString("email","none"))
+        binding.edPassword.setText(sharedPref.getString("password","none"))
         binding.edFirstname.requestFocus()
         binding.btnSave.setOnClickListener {
             val intent = Intent(this, DisplayGrievance::class.java)

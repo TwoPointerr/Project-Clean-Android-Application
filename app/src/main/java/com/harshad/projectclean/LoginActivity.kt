@@ -6,9 +6,6 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.CheckBox
-import android.widget.TextView
 import android.widget.Toast
 import com.harshad.projectclean.APIRequests.ApiClient
 import com.harshad.projectclean.APIRequests.authentication_data_class.CurrentLoggedUserResponse
@@ -18,7 +15,6 @@ import com.harshad.projectclean.databinding.ActivityLoginBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import kotlin.math.log
 
 class LoginActivity : AppCompatActivity() {
     lateinit var sharedPref: SharedPreferences
@@ -48,13 +44,13 @@ class LoginActivity : AppCompatActivity() {
 
 
         binding.btnLogin.setOnClickListener {
-            if (binding.edUsername.text.trim().isNotEmpty() || binding.edPassword.text.trim()
+            if (binding.edEmail.text.trim().isNotEmpty() || binding.edPassword.text.trim()
                     .isNotEmpty()
             ) {
-                val username: String = binding.edUsername.text.trim().toString()
+                val email: String = binding.edEmail.text.trim().toString()
                 val password: String = binding.edPassword.text.trim().toString()
                 validate()
-                login(this, username, password)
+                login(this, email, password)
                 //Toast.makeText(this,"Remember",Toast.LENGTH_LONG).show()
 
             } else {
@@ -127,7 +123,7 @@ class LoginActivity : AppCompatActivity() {
             })
     }
     private fun validate(): Boolean {
-        if (binding.edUsername.text.trim().isNotEmpty() || binding.edPassword.text.trim()
+        if (binding.edEmail.text.trim().isNotEmpty() || binding.edPassword.text.trim()
                 .isNotEmpty()
         ) {
             return true
