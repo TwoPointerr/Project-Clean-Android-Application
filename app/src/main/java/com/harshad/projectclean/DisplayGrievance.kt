@@ -10,16 +10,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.harshad.projectclean.APIRequests.ApiClient
 import com.harshad.projectclean.APIRequests.grievance_data_class.*
 import com.harshad.projectclean.grievance_recycler_view_classes.GrievanceRecycleViewAdapter
+import com.harshad.projectclean.databinding.ActivityDisplayGrievanceBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class DisplayGrievance : AppCompatActivity() {
+    private lateinit var binding: ActivityDisplayGrievanceBinding
     lateinit var adapter: GrievanceRecycleViewAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_display_grievance)
+        binding = ActivityDisplayGrievanceBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
         getGriData(this)
+
     }
 
     fun getGriData(context:Context){

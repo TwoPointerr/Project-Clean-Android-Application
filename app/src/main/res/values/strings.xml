@@ -107,4 +107,5 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="action_settings">Settings</string>
+    <string name="icon">Icon</string>
 </resources>

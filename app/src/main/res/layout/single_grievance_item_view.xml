@@ -1,112 +1,325 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <ImageView
-        android:id="@+id/iv_gri_img"
+    android:elevation="20dp"
+    android:paddingBottom="10dp"
+    android:layout_marginVertical="20dp"
+    android:background="#FFFFFF"
+    android:layout_height="wrap_content">
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:elevation="@dimen/cardview_default_elevation"
+        android:orientation="vertical">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:fillViewport="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_gri_img">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="4dp"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/textVuser_img"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                app:civ_border_color="@color/purple_500"
+                app:civ_border_width="0.5dp" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textVUsername"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:text="Username"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <ImageView
+                        android:id="@+id/iconHome"
+                        android:layout_width="18dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center_vertical"
+                        android:contentDescription="@string/icon"
+                        android:visibility="visible"
+                        app:srcCompat="@drawable/location" />
+
+                    <TextView
+                        android:id="@+id/textVlocation"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:text="Location"
+                        android:textColor="@android:color/secondary_text_light"
+                        android:textSize="16sp">
+
+                    </TextView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+<!--            <TextView-->
+<!--                android:id="@+id/textVRank2"-->
+<!--                style="bold"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center_vertical"-->
+<!--                android:layout_marginHorizontal="10dp"-->
+<!--                android:text="#2"-->
+<!--                android:textSize="20sp">-->
+
+<!--            </TextView>-->
+
+            <ImageView
+                android:id="@+id/iconOption"
+                android:layout_width="20dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:contentDescription="@string/icon"
+                app:srcCompat="@drawable/menu"
+                app:tint="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="4dp"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textVtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:text="Title"
+                    android:textColor="@color/black"
+                    android:fontFamily="monospace"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textVStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:text="In Progress"
+                    android:textColor="@android:color/holo_blue_dark"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/textRead"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:text="Read More"
+                    android:visibility="gone"
+                    android:textColor="@color/purple_700"
+                    android:textSize="14sp">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/textVDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Description"
+                    android:layout_marginHorizontal="10dp"
+                    android:textColor="@color/purple_700"
+                    android:textSize="14sp"
+                    android:visibility="visible">
+
+                </TextView>
+            </LinearLayout>
+            <TextView
+                android:id="@+id/textVRank"
+                style="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="16dp"
+                android:text="#2"
+                android:textSize="40sp">
+
+            </TextView>
+        </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <Button
-                android:id="@+id/btn_griLike"
-                android:layout_width="wrap_content"
+            <com.theophrast.ui.widget.SquareImageView
+                android:id="@+id/post_image"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Like"
-                android:layout_margin="30dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_totopOf="parent" />
-
-            <Button
-                android:id="@+id/btn_griComment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Comment"
-                android:layout_marginHorizontal="30dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/btn_griLike" />
-
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.5" />
-
-            <TextView
-                android:id="@+id/tv_gri_title"
-                style="@style/TextAppearance.AppCompat.Headline"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="30dp"
-                android:text="Title"
-                android:textSize="18sp"
-                android:textStyle="bold"
+                android:scaleType="centerCrop"
+                android:src="@color/purple_200"
+                app:hwRatio=".7"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tv_gri_location"
+                android:id="@+id/textVCat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="30dp"
-                android:layout_marginVertical="10dp"
-                android:text="location"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_gri_title" />
+                android:layout_margin="10dp"
+                android:text="Category"
+                android:textColor="@color/purple_700"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@id/post_image"
+                app:layout_constraintTop_toTopOf="@id/post_image">
 
+            </TextView>
 
+            <!--            <LinearLayout-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_margin="10dp"-->
+            <!--                app:layout_constraintBottom_toBottomOf="@id/post_image"-->
+            <!--                app:layout_constraintEnd_toEndOf="@id/post_image">-->
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:id="@id/tvDesc"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_gri_location"
-                android:layout_marginVertical="10dp"
-                android:layout_marginHorizontal="30dp">
-                <TextView
-                    android:id="@+id/edDesc"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Description"
-                    android:lines="5"
-                    android:textSize="16sp">
-                </TextView>
+            <!--                <ImageView-->
+            <!--                    android:id="@+id/upimg"-->
+            <!--                    android:layout_width="25dp"-->
+            <!--                    android:layout_height="25dp"-->
+            <!--                    android:layout_centerInParent="true"-->
+            <!--                    android:layout_gravity="center_vertical"-->
+            <!--                    android:src="@drawable/up"-->
+            <!--                    android:visibility="visible" />-->
 
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.gms.maps.MapView
-                android:id="@+id/mapView"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_margin="30dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvDesc"/>
-
+            <!--                <TextView-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:text="ABC"-->
+            <!--                    android:layout_marginStart="4dp"-->
+            <!--                    android:textSize="24dp"-->
+            <!--                    android:layout_gravity="center_vertical"/>-->
+            <!--            </LinearLayout>-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/icon_up"
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:contentDescription="@string/icon"
+                        android:src="@drawable/up"
+                        android:visibility="visible" />
+
+                    <ImageView
+                        android:id="@+id/icon_upfill"
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:contentDescription="@string/icon"
+                        android:src="@drawable/up_fill"
+                        android:visibility="invisible" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/textVUpvote"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="45"
+                    android:layout_marginStart="5dp"
+                    android:textSize="24sp">
+
+                </TextView>
+            </LinearLayout>
+
+
+
+            <ImageView
+                android:id="@+id/iconComments"
+                android:layout_width="30dp"
+                android:layout_marginStart="20dp"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/icon"
+                android:src="@drawable/comments" />
+
+            <!--            <ImageView-->
+            <!--                android:id="@+id/img_send"-->
+            <!--                android:layout_width="40dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:src="@drawable/send"-->
+            <!--                android:contentDescription="@string/icon"  />-->
+
+            <!--            <RelativeLayout-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:gravity="end">-->
+
+            <!--                <ImageView-->
+            <!--                    android:id="@+id/img_save"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:src="@drawable/save"-->
+            <!--                    android:contentDescription="@string/icon"  />-->
+
+            <!--            </RelativeLayout>-->
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/textVTimePosted"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:text="0 days ago"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+    </LinearLayout>
+</RelativeLayout>

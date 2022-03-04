@@ -25,7 +25,7 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        sharedPref = getSharedPreferences("SP", Context.MODE_PRIVATE)
+        sharedPref = getSharedPreferences("SP", MODE_PRIVATE)
         var isRemembered = sharedPref.getBoolean("REMEMBER", false)
 
         if (isRemembered){
@@ -40,7 +40,7 @@ class LoginActivity : AppCompatActivity() {
             finish()
         }
 
-        sharedPref = getSharedPreferences("SP", Context.MODE_PRIVATE)
+        sharedPref = getSharedPreferences("SP", MODE_PRIVATE)
 
 
         binding.btnLogin.setOnClickListener {
@@ -62,7 +62,7 @@ class LoginActivity : AppCompatActivity() {
     fun login(context: Context, email: String, password: String) {
         val apiClient: ApiClient = ApiClient()
         val editor: SharedPreferences.Editor = sharedPref.edit()
-        var sharedPref = getSharedPreferences("SP", Context.MODE_PRIVATE)
+        var sharedPref = getSharedPreferences("SP", MODE_PRIVATE)
 
         apiClient.authenticationApiRequests()
             .login(LoginRequest(email = email, password = password))
