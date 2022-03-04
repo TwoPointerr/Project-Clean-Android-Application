@@ -54,8 +54,15 @@ dependencies {
 
     implementation 'com.github.bumptech.glide:glide:4.12.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+
+    //imagepicker and imageviews
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.github.dhaval2404:imagepicker:2.1'
     implementation 'com.github.Theophrast:SquareImageView:1.0.1'
+
+    //shimmer effect
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
+    //icon in textview
+    implementation 'androidx.appcompat:appcompat:1.4.1'
 
 }

@@ -6,6 +6,37 @@
     android:layout_height="match_parent"
     tools:context=".DisplayGrievance">
 
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/shimmer_grievance" />
+
+            <include layout="@layout/shimmer_grievance" />
+
+            <include layout="@layout/shimmer_grievance" />
+
+            <include layout="@layout/shimmer_grievance" />
+
+            <include layout="@layout/shimmer_grievance" />
+
+
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recy_grievance_list"
         android:layout_width="match_parent"

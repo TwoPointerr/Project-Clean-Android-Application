@@ -15,6 +15,8 @@
     <color name="colorPrimaryDark">#CECECE</color>
     <color name="colorAccent">#03DAC5</color>
 
+    <color name="shimmerColor">#C2C2C2</color>
+    <color name="background">#dddddd</color>
     <color name="lightgray">#EDE7F6</color>
 
     <color name="instafirstclor">#3c43e5</color>
