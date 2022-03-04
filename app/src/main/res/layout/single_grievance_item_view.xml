@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,13 +8,9 @@
     android:paddingBottom="10dp"
     android:layout_marginVertical="20dp"
     android:background="#FFFFFF"
-    android:layout_height="wrap_content">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:elevation="@dimen/cardview_default_elevation"
-        android:orientation="vertical">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -41,10 +38,9 @@
 
                 <TextView
                     android:id="@+id/textVUsername"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="1"
                     android:text="Username"
                     android:textColor="@color/black"
                     android:textSize="18sp"
@@ -73,9 +69,8 @@
                         android:layout_weight="1"
                         android:text="Location"
                         android:textColor="@android:color/secondary_text_light"
-                        android:textSize="16sp">
+                        android:textSize="16sp"/>
 
-                    </TextView>
 
                 </LinearLayout>
 
@@ -123,7 +118,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="10dp"
-                    android:layout_weight="1"
                     android:text="Title"
                     android:textColor="@color/black"
                     android:fontFamily="monospace"
@@ -132,11 +126,10 @@
 
                 <TextView
                     android:id="@+id/textVStatus"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="10dp"
-                    android:layout_weight="1"
                     android:text="In Progress"
                     android:textColor="@android:color/holo_blue_dark"
                     android:textSize="16sp" />
@@ -322,4 +315,3 @@
             android:textColor="@color/black"
             android:textSize="14sp" />
     </LinearLayout>
-</RelativeLayout>
