@@ -30,7 +30,7 @@ import java.io.File
 class CreatePost : AppCompatActivity() {
     private lateinit var binding: ActivityCreatePostBinding
 
-    val items = arrayOf("Option 1", "Option 2", "Option 3")
+    val items = arrayOf("Garbage", "Pothole", "Fallen Tree", "Other")
     lateinit var actv :AutoCompleteTextView
     lateinit var  adapterItems : ArrayAdapter<String>
     lateinit var imgFile:File
@@ -64,7 +64,7 @@ class CreatePost : AppCompatActivity() {
 
 
         binding.btnSave.setOnClickListener {
-            val griTitle = binding.edDesc.text.trim().toString()
+            val griTitle = binding.edTitle.text.trim().toString()
             val griDesc = binding.edDesc.text.trim().toString()
             Log.d("Create Post","Gri Title $griTitle")
 
