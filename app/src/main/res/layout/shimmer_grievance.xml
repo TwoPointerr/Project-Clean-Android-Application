@@ -82,7 +82,7 @@
             android:layout_height="0dp"
             android:layout_gravity="center_vertical"
             android:contentDescription="@string/icon"
-            app:srcCompat="@drawable/menu"
+            app:srcCompat="@drawable/ic_menu"
             app:tint="@color/black" />
     </LinearLayout>
 

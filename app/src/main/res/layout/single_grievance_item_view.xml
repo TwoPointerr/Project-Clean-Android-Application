@@ -54,12 +54,12 @@
 
                     <ImageView
                         android:id="@+id/iconHome"
-                        android:layout_width="18dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="24dp"
                         android:layout_gravity="center_vertical"
                         android:contentDescription="@string/icon"
                         android:visibility="visible"
-                        app:srcCompat="@drawable/location" />
+                        app:srcCompat="@drawable/ic_location" />
 
                     <TextView
                         android:id="@+id/textVlocation"
@@ -94,7 +94,7 @@
                 android:layout_height="40dp"
                 android:layout_gravity="center_vertical"
                 android:contentDescription="@string/icon"
-                app:srcCompat="@drawable/menu"
+                app:srcCompat="@drawable/ic_menu"
                 app:tint="@color/black" />
         </LinearLayout>
 
@@ -120,7 +120,6 @@
                     android:layout_marginStart="10dp"
                     android:text="Title"
                     android:textColor="@color/black"
-                    android:fontFamily="monospace"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -160,7 +159,7 @@
             </LinearLayout>
             <TextView
                 android:id="@+id/textVRank"
-                style="bold"
+                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -191,7 +190,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:text="Category"
-                android:textColor="@color/purple_700"
+                android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="@id/post_image"
                 app:layout_constraintTop_toTopOf="@id/post_image">
@@ -239,24 +238,25 @@
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
+                    android:layout_gravity="center_vertical"
                     android:layout_height="wrap_content">
 
                     <ImageView
                         android:id="@+id/icon_up"
                         android:layout_width="30dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_centerInParent="true"
                         android:contentDescription="@string/icon"
-                        android:src="@drawable/up"
+                        android:src="@drawable/ic_thumb_up"
                         android:visibility="visible" />
 
                     <ImageView
                         android:id="@+id/icon_upfill"
                         android:layout_width="30dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_centerInParent="true"
                         android:contentDescription="@string/icon"
-                        android:src="@drawable/up_fill"
+                        android:src="@drawable/ic_thumb_up_fill"
                         android:visibility="invisible" />
                 </RelativeLayout>
 
@@ -276,10 +276,11 @@
             <ImageView
                 android:id="@+id/iconComments"
                 android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
                 android:layout_marginStart="20dp"
-                android:layout_height="wrap_content"
                 android:contentDescription="@string/icon"
-                android:src="@drawable/comments" />
+                android:src="@drawable/ic_comment" />
 
             <!--            <ImageView-->
             <!--                android:id="@+id/img_send"-->

@@ -58,7 +58,7 @@
                         android:layout_gravity="center_vertical"
                         android:contentDescription="@string/icon"
                         android:visibility="visible"
-                        app:srcCompat="@drawable/location" />
+                        app:srcCompat="@drawable/ic_location" />
 
                     <TextView
                         android:id="@+id/textVlocation"
@@ -80,7 +80,7 @@
                 android:layout_height="40dp"
                 android:layout_gravity="center_vertical"
                 android:contentDescription="@string/icon"
-                app:srcCompat="@drawable/menu"
+                app:srcCompat="@drawable/ic_menu"
                 app:tint="@color/black" />
         </LinearLayout>
 
@@ -219,7 +219,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_centerInParent="true"
                                 android:contentDescription="@string/icon"
-                                android:src="@drawable/up"
+                                android:src="@drawable/ic_thumb_up"
                                 android:visibility="visible" />
 
                             <ImageView
@@ -228,7 +228,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_centerInParent="true"
                                 android:contentDescription="@string/icon"
-                                android:src="@drawable/up_fill"
+                                android:src="@drawable/ic_thumb_up_fill"
                                 android:visibility="invisible" />
                         </RelativeLayout>
 
@@ -250,7 +250,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
                         android:contentDescription="@string/icon"
-                        android:src="@drawable/comments" />
+                        android:src="@drawable/ic_comment" />
 
 
                 </LinearLayout>
