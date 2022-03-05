@@ -109,4 +109,11 @@
     <string name="action_settings">Settings</string>
     <string name="icon">Icon</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet consectetur adipisicing elit.Maxime mollitia, molestiae quas vel sint commodi repudiandae consequuntur.\n\n voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit, tenetur error, harum nesciunt ipsum debitis quas aliquid.</string>
+    <string name="lorem">Lorem ipsum dolor sit amet consectetur adipisicing elit.Maxime mollitia,  harum nesciunt ipsum debitis quas aliquid.</string>
+    <string name="demoLatlong">19.71280, 71.89764</string>
+    <string name="map">Map</string>
+    <string name="home">Home</string>
+    <string name="profile">Profile</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

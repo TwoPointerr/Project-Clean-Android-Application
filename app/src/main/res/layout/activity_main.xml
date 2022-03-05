@@ -68,10 +68,11 @@
         android:layout_marginBottom="28dp"
         android:clickable="true"
         android:focusable="true"
-        android:foreground="@android:drawable/ic_menu_add"
-        app:backgroundTint="#673AB7"
+        android:foreground="@drawable/ic_add"
+        app:backgroundTint="#00ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="Add Icon" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

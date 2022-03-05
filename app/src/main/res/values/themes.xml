@@ -12,6 +12,8 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="android:fontFamily">@font/sf_ui_font</item>
+        <item name="fontFamily">@font/sf_ui_font</item>
     </style>
     <style name="Theme.ProjectClean.NoActionBar">
         <item name="windowActionBar">false</item>
@@ -19,4 +21,21 @@
     </style>
     <style name="Theme.ProjectClean.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="Theme.ProjectClean.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+<!--    drawable sizes-->
+    <style name="Larger_Drawable">
+        <item name="android:textSize">10sp</item>
+        <item name="android:scaleX">1.6</item>
+        <item name="android:scaleY">1.6</item>
+    </style>
+
+    <style name="Normal_Drawable">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="Smaller_Drawable">
+        <item name="android:textSize">20sp</item>
+        <item name="android:scaleX">0.1</item>
+        <item name="android:scaleY">0.1</item>
+    </style>
 </resources>
