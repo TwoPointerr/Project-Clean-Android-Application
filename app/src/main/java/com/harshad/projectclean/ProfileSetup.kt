@@ -23,6 +23,7 @@ class ProfileSetup : AppCompatActivity() {
         binding = ActivityProfileSetupBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
         sharedPref = getSharedPreferences("SP", Context.MODE_PRIVATE)
         binding.edUsername.setText(sharedPref.getString("username","none"))
         binding.edEmail.setText(sharedPref.getString("email","none"))

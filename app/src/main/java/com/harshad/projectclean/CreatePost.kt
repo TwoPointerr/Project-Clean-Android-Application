@@ -4,6 +4,8 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.pm.PackageManager
+import android.location.Geocoder
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
@@ -12,12 +14,15 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.core.net.toFile
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.harshad.projectclean.APIRequests.ApiClient
 import com.harshad.projectclean.APIRequests.grievance_data_class.TemporaryGriResponse
 import com.harshad.projectclean.databinding.ActivityCreatePostBinding
 import okhttp3.MediaType.Companion.toMediaType
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -25,6 +30,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.io.File
+import java.lang.Exception
 
 
 class CreatePost : AppCompatActivity() {
@@ -35,6 +41,7 @@ class CreatePost : AppCompatActivity() {
     lateinit var  adapterItems : ArrayAdapter<String>
     lateinit var imgFile:File
     lateinit var sharedPref:SharedPreferences
+    lateinit var fusedLocationProviderClient: FusedLocationProviderClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,7 +63,7 @@ class CreatePost : AppCompatActivity() {
         actv = binding.dropMenu
         adapterItems = ArrayAdapter<String>(this,R.layout.list_item,items)
         actv.setAdapter(adapterItems)
-        actv.setOnItemClickListener(OnItemClickListener { parent, view, position, id ->
+        actv.setOnItemClickListener(OnItemClickListener { parent, _, position, _ ->  //parent,view, position, id
             val item = parent.getItemAtPosition(position).toString()
             Toast.makeText(applicationContext, "Item: $item", Toast.LENGTH_SHORT).show()
         })
@@ -88,13 +95,51 @@ class CreatePost : AppCompatActivity() {
 
         if(resultCode== Activity.RESULT_OK && requestCode== ImagePicker.REQUEST_CODE) {
 
-//            binding.ivGriImg.setImageBitmap()
+            fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
+            fetchLocation()
+
             binding.ivGriImg.setImageURI(data?.data)
 
             Log.d("Asach","${data?.data}")
             imgFile = data?.data?.toFile()!!
         }
 
+
+    }
+    private fun fetchLocation(){
+        val task = fusedLocationProviderClient.lastLocation
+
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION)
+            != PackageManager.PERMISSION_GRANTED &&
+            ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION)
+            != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this,arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),101)
+            return
+        }
+
+        task.addOnSuccessListener {
+            if (it!=null){
+                Log.d("Location","In task listener")
+                Toast.makeText(applicationContext,"${it.latitude} ${it.longitude}",Toast.LENGTH_LONG).show()
+                lateinit var add : String
+                try {
+                    add = getAddress(it.latitude, it.longitude)
+                }
+                catch (e:Exception){
+                    e.printStackTrace()
+                }
+                binding.tvLocation.setText(add)
+
+                Log.d("Location found",add)
+                Toast.makeText(applicationContext,add,Toast.LENGTH_LONG).show()
+            }
+
+        }
+    }
+    private fun getAddress(lat: Double, lng: Double): String {
+        val geocoder = Geocoder(this)
+        val list = geocoder.getFromLocation(lat, lng, 1)
+        return list[0].getAddressLine(0)
     }
 
     private fun create_gri(imgFile: File,
