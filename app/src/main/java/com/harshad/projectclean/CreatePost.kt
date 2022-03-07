@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.location.Geocoder
+import android.media.ExifInterface
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
@@ -58,6 +59,10 @@ class CreatePost : AppCompatActivity() {
                 .compress(512)
                 .saveDir(getExternalFilesDir(Environment.DIRECTORY_PICTURES)!!).start()
         }
+
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
+        fetchLocation()
+
         sharedPref = getSharedPreferences("SP", Context.MODE_PRIVATE)
 
         actv = binding.dropMenu
@@ -95,20 +100,21 @@ class CreatePost : AppCompatActivity() {
 
         if(resultCode== Activity.RESULT_OK && requestCode== ImagePicker.REQUEST_CODE) {
 
-            fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
-            fetchLocation()
+
 
             binding.ivGriImg.setImageURI(data?.data)
 
-            Log.d("Asach","${data?.data}")
+            Log.d("ImgFile3","${data?.data}")
             imgFile = data?.data?.toFile()!!
+
+
         }
 
 
     }
     private fun fetchLocation(){
         val task = fusedLocationProviderClient.lastLocation
-
+        Log.d("fetchLocation","In task listener")
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION)
             != PackageManager.PERMISSION_GRANTED &&
             ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION)
@@ -119,7 +125,7 @@ class CreatePost : AppCompatActivity() {
 
         task.addOnSuccessListener {
             if (it!=null){
-                Log.d("Location","In task listener")
+
                 Toast.makeText(applicationContext,"${it.latitude} ${it.longitude}",Toast.LENGTH_LONG).show()
                 lateinit var add : String
                 try {
@@ -130,7 +136,7 @@ class CreatePost : AppCompatActivity() {
                 }
                 binding.tvLocation.setText(add)
 
-                Log.d("Location found",add)
+                Log.d("fetchLocation found",add)
                 Toast.makeText(applicationContext,add,Toast.LENGTH_LONG).show()
             }
 

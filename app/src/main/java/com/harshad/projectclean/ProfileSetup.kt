@@ -49,10 +49,10 @@ class ProfileSetup : AppCompatActivity() {
 
 
             binding.profileImage.setImageURI(data?.data)
-            Log.d("Asach","${data?.data}")
+            Log.d("ImageFile","${data?.data}")
 
             var s1= data?.data?.toFile()
-            Log.d("Bdach",s1.toString())
+            Log.d("IMGfile",s1.toString())
 
         }
 
