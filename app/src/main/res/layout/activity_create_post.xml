@@ -72,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="30dp"
                 android:scaleX="1"
-                android:text="@string/demoLatlong"
+                android:text=""
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvTitle" />
