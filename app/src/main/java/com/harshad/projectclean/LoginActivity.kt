@@ -7,14 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import com.harshad.projectclean.APIRequests.ApiClient
-import com.harshad.projectclean.APIRequests.authentication_data_class.CurrentLoggedUserResponse
-import com.harshad.projectclean.APIRequests.authentication_data_class.LoginRequest
-import com.harshad.projectclean.APIRequests.authentication_data_class.LoginResponse
+import com.harshad.projectclean.APIRequests.authentication_data_class.AuthenticationFunctions
 import com.harshad.projectclean.databinding.ActivityLoginBinding
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
     lateinit var sharedPref: SharedPreferences
@@ -25,22 +19,22 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        sharedPref = getSharedPreferences("SP", MODE_PRIVATE)
+        sharedPref = getSharedPreferences("SP", Context.MODE_PRIVATE)
         var isRemembered = sharedPref.getBoolean("REMEMBER", false)
 
         if (isRemembered){
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, DisplayGrievance::class.java)
             startActivity(intent)
             finish()
         }
 
         binding.textRegister.setOnClickListener {
-            val intent = Intent(this, RegisterActivity::class.java)
+            val intent = Intent(this, ProfileSetup::class.java)
             startActivity(intent)
             finish()
         }
 
-        sharedPref = getSharedPreferences("SP", MODE_PRIVATE)
+        sharedPref = getSharedPreferences("SP", Context.MODE_PRIVATE)
 
 
         binding.btnLogin.setOnClickListener {
@@ -50,8 +44,10 @@ class LoginActivity : AppCompatActivity() {
                 val email: String = binding.edEmail.text.trim().toString()
                 val password: String = binding.edPassword.text.trim().toString()
                 validate()
-                login(this, email, password)
-                //Toast.makeText(this,"Remember",Toast.LENGTH_LONG).show()
+                val loginObj = AuthenticationFunctions(this,sharedPref)
+                Log.d("Logging","Inside Loggin $email ")
+                Toast.makeText(this,"Logging...",Toast.LENGTH_LONG).show()
+                loginObj.login( email, password)
 
             } else {
                 Toast.makeText(this, "Enter Info", Toast.LENGTH_LONG).show()
@@ -59,69 +55,6 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    fun login(context: Context, email: String, password: String) {
-        val apiClient: ApiClient = ApiClient()
-        val editor: SharedPreferences.Editor = sharedPref.edit()
-        var sharedPref = getSharedPreferences("SP", MODE_PRIVATE)
-
-        apiClient.authenticationApiRequests()
-            .login(LoginRequest(email = email, password = password))
-            .enqueue(object : Callback<LoginResponse> {
-                override fun onResponse(
-                    call: Call<LoginResponse>,
-                    response: Response<LoginResponse>
-                ) {
-                    val loginResponse = response.body()
-                    if (loginResponse?.auth_token != null) {
-                        editor.putString("auth_token", loginResponse.auth_token)
-                        editor.putBoolean("REMEMBER", true)
-                        editor.apply()
-
-                        storeCurrentLoggedUser(loginResponse.auth_token)
-                        Toast.makeText(
-                            context,
-                            "Successful Login ${loginResponse.auth_token}",
-                            Toast.LENGTH_LONG
-                        ).show()
-
-                        val intent = Intent(context, MainActivity::class.java)
-                        startActivity(intent)
-                        finish()
-                    }
-                }
-                override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                    Toast.makeText(context, "Login Unsuccessful", Toast.LENGTH_LONG).show()
-                }
-            })
-    }
-
-    fun storeCurrentLoggedUser(token:String){
-        val apiClient: ApiClient = ApiClient()
-        val editor: SharedPreferences.Editor = sharedPref.edit()
-
-        apiClient.authenticationApiRequests()
-            .getCurrentLoggedUser(token = "Token $token")
-            .enqueue(object :Callback<CurrentLoggedUserResponse>{
-                override fun onResponse(
-                    call: Call<CurrentLoggedUserResponse>,
-                    response: Response<CurrentLoggedUserResponse>
-                ) {
-                    val currentUser = response.body()
-                    editor.putInt("user_id", currentUser!!.id)
-                    editor.putString("user_first_name", currentUser.first_name)
-                    editor.putString("user_last_name", currentUser.last_name)
-                    editor.putString("user_email", currentUser.email)
-                    editor.putString("user_username", currentUser.username)
-                    editor.apply()
-                    Log.d("Current User","Info ${sharedPref.getString("user_first_name","No name")} ${sharedPref.getInt("user_id",0).toString()}")
-                    //Log.d("Current User","Successful ${response.body()}")
-
-                }
-                override fun onFailure(call: Call<CurrentLoggedUserResponse>, t: Throwable) {
-                    Log.d("Current User","Unsuccessful $t")
-                }
-            })
-    }
     private fun validate(): Boolean {
         if (binding.edEmail.text.trim().isNotEmpty() || binding.edPassword.text.trim()
                 .isNotEmpty()

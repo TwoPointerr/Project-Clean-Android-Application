@@ -57,11 +57,11 @@ class MainActivity : AppCompatActivity() {
             //create_gri()
         }
 
-        binding.fabNew.setOnClickListener {
-            val intent = Intent(this, CreatePost::class.java)
-            startActivity(intent)
-            finish()
-        }
+//        binding.fabNew.setOnClickListener {
+//            val intent = Intent(this, CreatePost::class.java)
+//            startActivity(intent)
+//            finish()
+//        }
 
         binding.btnProfileSetup.setOnClickListener {
             val intent = Intent(this, ProfileSetup::class.java)

@@ -28,7 +28,7 @@
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:backgroundTint="#C12F2F"
-            android:src="@android:drawable/ic_menu_report_image"
+            android:src="@drawable/ic_baseline_account_circle_24"
             app:civ_border_color="#ffffff"
             app:civ_border_width="5dp"
             app:layout_constraintBottom_toBottomOf="@+id/imgTop"
@@ -36,18 +36,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imgTop" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabImg"
-            android:layout_width="49dp"
-            android:layout_height="55dp"
-            android:clickable="true"
-            android:contentDescription="FAB"
-            android:focusable="true"
-            android:foregroundGravity="center"
-            app:backgroundTint="#00FFFFFF"
-            app:layout_constraintBottom_toBottomOf="@+id/profile_image"
-            app:layout_constraintEnd_toEndOf="@+id/profile_image"
-            app:srcCompat="@android:drawable/ic_menu_camera" />
+<!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--            android:id="@+id/fabImg"-->
+<!--            android:layout_width="50dp"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:clickable="true"-->
+<!--            android:contentDescription="FAB"-->
+<!--            android:focusable="true"-->
+<!--            android:foregroundGravity="center"-->
+<!--            android:visibility="invisible"-->
+<!--            app:backgroundTint="#7C4DFF"-->
+<!--            app:layout_constraintBottom_toBottomOf="@+id/profile_image"-->
+<!--            app:layout_constraintEnd_toEndOf="@+id/profile_image"-->
+<!--            app:srcCompat="@drawable/ic_baseline_camera_alt_24" />-->
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -136,9 +137,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints="username"
-                android:enabled="false"
                 android:hint="@string/username"
-                android:inputType="none"
                 android:maxLines="1" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -211,6 +210,20 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.5" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabImg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:clickable="true"
+            app:layout_constraintBottom_toBottomOf="@+id/profile_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.39"
+            app:layout_constraintStart_toStartOf="@+id/profile_image"
+            app:layout_constraintTop_toTopOf="@+id/profile_image"
+            app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@drawable/ic_baseline_add_a_photo_24" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

@@ -31,28 +31,30 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.io.File
-import java.lang.Exception
 
 
 class CreatePost : AppCompatActivity() {
     private lateinit var binding: ActivityCreatePostBinding
 
-    val items = arrayOf("Garbage", "Pothole", "Fallen Tree", "Other")
+    val items = arrayOf("Garbage","Pothole","Fallen Tree")
     lateinit var actv :AutoCompleteTextView
     lateinit var  adapterItems : ArrayAdapter<String>
     lateinit var imgFile:File
     lateinit var sharedPref:SharedPreferences
     lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+    lateinit var loc_long:String
+    lateinit var loc_lat:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCreatePostBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+        var categorySelected:Int = 1
 
-        ImagePicker.with(this).cameraOnly()
-            .compress(512)
-            .saveDir(getExternalFilesDir(Environment.DIRECTORY_PICTURES)!!).start()
+//        ImagePicker.with(this).cameraOnly()
+//            .compress(512)
+//            .saveDir(getExternalFilesDir(Environment.DIRECTORY_PICTURES)!!).start()
 
         binding.fabImg.setOnClickListener {
             ImagePicker.with(this).cameraOnly()
@@ -68,7 +70,8 @@ class CreatePost : AppCompatActivity() {
         actv = binding.dropMenu
         adapterItems = ArrayAdapter<String>(this,R.layout.list_item,items)
         actv.setAdapter(adapterItems)
-        actv.setOnItemClickListener(OnItemClickListener { parent, _, position, _ ->  //parent,view, position, id
+        actv.setOnItemClickListener(OnItemClickListener { parent, view, position, id ->
+            categorySelected = position + 1
             val item = parent.getItemAtPosition(position).toString()
             Toast.makeText(applicationContext, "Item: $item", Toast.LENGTH_SHORT).show()
         })
@@ -79,15 +82,15 @@ class CreatePost : AppCompatActivity() {
             val griTitle = binding.edTitle.text.trim().toString()
             val griDesc = binding.edDesc.text.trim().toString()
             Log.d("Create Post","Gri Title $griTitle")
-
+            Toast.makeText(this,"Registering your complaint...",Toast.LENGTH_LONG).show()
             create_gri(
                 imgFile=imgFile,
                 gri_title = griTitle,
                 gri_desc = griDesc,
                 gri_uploaded_user = sharedPref.getInt("user_id",0).toString(),
-                gri_loc_lat = "19.066541",
-                gri_loc_long = "72.998431",
-                gri_category = "2",
+                gri_loc_lat = loc_lat,
+                gri_loc_long = loc_long,
+                gri_category = categorySelected.toString(),
                 context = this
             )
 
@@ -99,9 +102,8 @@ class CreatePost : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if(resultCode== Activity.RESULT_OK && requestCode== ImagePicker.REQUEST_CODE) {
-
-
-
+            fetchLocation()
+//            binding.ivGriImg.setImageBitmap()
             binding.ivGriImg.setImageURI(data?.data)
 
             Log.d("ImgFile3","${data?.data}")
@@ -125,7 +127,8 @@ class CreatePost : AppCompatActivity() {
 
         task.addOnSuccessListener {
             if (it!=null){
-
+                loc_long = it.longitude.toString()
+                loc_lat = it.latitude.toString()
                 Toast.makeText(applicationContext,"${it.latitude} ${it.longitude}",Toast.LENGTH_LONG).show()
                 lateinit var add : String
                 try {
@@ -161,7 +164,7 @@ class CreatePost : AppCompatActivity() {
         val apiClient = ApiClient()
 
         val requestImageFile = imgFile.asRequestBody("image/*".toMediaType())
-        val multiPartFormBody: MultipartBody.Part = MultipartBody.Part.createFormData("gri_img","IMG-20220227-WA0000.jpg",requestImageFile)
+        val multiPartFormBody: MultipartBody.Part = MultipartBody.Part.createFormData("gri_img",imgFile.name,requestImageFile)
 
         apiClient.grievanceApiRequests().createGrievance(
             multiPartFormBody,
@@ -178,6 +181,7 @@ class CreatePost : AppCompatActivity() {
                 response: Response<TemporaryGriResponse>
             ) {
                 Log.d("Gri Create","Gri Create Successful ${response}")
+                Toast.makeText(context,"Your Complaint registered successfully",Toast.LENGTH_LONG).show()
                 val intent = Intent(context, DisplayGrievance::class.java)
                 startActivity(intent)
                 finish()
@@ -185,6 +189,7 @@ class CreatePost : AppCompatActivity() {
 
             override fun onFailure(call: Call<TemporaryGriResponse>, t: Throwable) {
                 Log.d("Gri Create","Gri Create UN-Successful ${t}")
+                Toast.makeText(context,"Uhh Ohh!! Something went wrong, Try again",Toast.LENGTH_LONG).show()
             }
         })
     }

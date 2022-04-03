@@ -6,7 +6,14 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.harshad.projectclean.APIRequests.ApiClient
+import com.harshad.projectclean.APIRequests.authentication_data_class.AuthenticationFunctions
+import com.harshad.projectclean.APIRequests.authentication_data_class.RegisterRequest
+import com.harshad.projectclean.APIRequests.authentication_data_class.RegisterResponse
 import com.harshad.projectclean.databinding.ActivityRegisterBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class RegisterActivity : AppCompatActivity() {
     lateinit var sharedPref : SharedPreferences
@@ -42,7 +49,12 @@ class RegisterActivity : AppCompatActivity() {
 
                 editor.apply()
                 Toast.makeText(this,"Profile", Toast.LENGTH_LONG).show()
-
+//                val authenticationFunctions = AuthenticationFunctions(this,sharedPref)
+//                authenticationFunctions.register(
+//                    username=username,
+//                    email=email,
+//                    password=password
+//                )
                 val intent = Intent(this, ProfileSetup::class.java)
 //                intent.putExtra("Username",username)
 //                intent.putExtra("Phoneno",phoneno)
@@ -54,6 +66,8 @@ class RegisterActivity : AppCompatActivity() {
             }
         }
     }
+
+
     private fun validate(): Boolean {
         return (binding.edUsername.text.trim().isNotEmpty() )
     }

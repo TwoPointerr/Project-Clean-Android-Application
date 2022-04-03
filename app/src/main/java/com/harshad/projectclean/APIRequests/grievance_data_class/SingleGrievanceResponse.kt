@@ -8,5 +8,5 @@ data class SingleGrievanceResponse(val id:Int,
                                    val gri_upvote:Int,
                                    val gri_priority:Int,
                                    val gri_uploaded_user: UploadedUserProfile,
-                                   val gri_locationResponse: GrievanceLocationResponse,
+                                   val gri_location: GrievanceLocationResponse,
                                    val gri_timeStamp:String)

@@ -1,17 +1,17 @@
 package com.harshad.projectclean.APIRequests
 
-import android.location.LocationRequest
-import com.harshad.projectclean.APIRequests.grievance_data_class.GrievanceLocationRequest
-import com.harshad.projectclean.APIRequests.grievance_data_class.GrievancesListResponse
-import com.harshad.projectclean.APIRequests.grievance_data_class.TemporaryGriResponse
+import com.harshad.projectclean.APIRequests.grievance_data_class.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
 
 interface GrievanceRequests {
-    @GET(URLConstants.GET_GRI_DATA)
-    fun getGrievanceData(@Header("Authorization") token:String):Call<GrievancesListResponse>
+    @POST(URLConstants.GET_GRI_DATA)
+    fun getGrievanceData(
+        @Header("Authorization") token:String,
+        @Body DisplayLocationRequest:DisplayGrievanceLocationRequest
+    ):Call<GrievancesListResponse>
 
     @Multipart
     @POST(URLConstants.UPLOAD_GRI)
@@ -24,4 +24,9 @@ interface GrievanceRequests {
                         @Part("loc_lat") loc_lat:RequestBody?,
                         @Part("loc_long") loc_long:RequestBody?,
     ):Call<TemporaryGriResponse>
+
+    @POST(URLConstants.UPVOTE_GRI)
+    fun upvoteGrievance(@Header("Authorization") token:String,
+                        @Body UpvoteRequest: UpvoteRequest
+    ):Call<UpvoteResponse>
 }
