@@ -77,6 +77,7 @@ class DisplayGrievance : AppCompatActivity() {
             finish()
         }
 
+//        var adapter2 = GrievanceRecycleViewAdapter(context,list)
     }
 
     fun getGriData(context:Context,loc_long:Double,loc_lat:Double){
