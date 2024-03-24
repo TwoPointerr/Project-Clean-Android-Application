@@ -11,6 +11,8 @@ Download Application here: https://github.com/TwoPointerr/Project-Clean-Android-
 
 In today's interconnected world, our Grievance Registration Android Application leverages technology to address modern issues related to grievance registration. The project modules are designed to streamline and simplify the overall grievance registration process, saving users valuable time.
 
+Research Paper: https://www.irjet.net/archives/V9/i4/IRJET-V9I4373.pdf
+
 ## Features
 
 - **Image Severity Analysis**: Users can capture images through the application, and a machine learning model assesses the severity of the issue, categorizing it as high, medium, or low.
