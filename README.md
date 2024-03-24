@@ -1,5 +1,7 @@
 
-# Grievance Registration Web Application
+# Grievance Registration Android Application
+
+Download Application here: https://github.com/TwoPointerr/Project-Clean-Android-Application/releases
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
